@@ -18,7 +18,7 @@ const authUser =  asyncHandler(async (req, res) => {
        res.json ({
           _id : user._id,
           name: user.name,
-          email: user.email,
+          email: user.email, 
           isAdmin: user.isAdmin,
           token: generateToken(user._id)
        });
@@ -30,6 +30,18 @@ const authUser =  asyncHandler(async (req, res) => {
 });
 
 
+//@desc   Get user profile
+//@route  GET /api/users/login
+//@access Private
+const getUserProfile =  asyncHandler(async (req, res) => {
+  
+    const user = await User.findById(req.user._id);
+ 
+ 
+     res.send('Success')
+   }); 
+
 export {
-   authUser
+   authUser,
+   getUserProfile
 }

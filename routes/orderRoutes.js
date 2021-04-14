@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 import { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders } from "../controller/orderController.js";
-import  protect  from '../middleware/authMiddleware.js';
+import  { protect } from '../middleware/authMiddleware.js';
 
 
 router.route('/').post(protect,addOrderItems);

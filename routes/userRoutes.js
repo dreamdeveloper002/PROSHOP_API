@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 
-import { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserByID } from "../controller/userController.js";
+import { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserByID, updateUser } from "../controller/userController.js";
 import { protect, admin } from '../middleware/authMiddleware.js'
 
 
@@ -20,7 +20,8 @@ router.route('/profile')
       
 router.route('/:id')
       .delete(protect, admin, deleteUser)
-      .get(protect, admin, getUserByID);
+      .get(protect, admin, getUserByID)
+      .put(protect, admin, updateUser);
 
 
 

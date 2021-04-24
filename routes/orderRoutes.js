@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 
-import { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders } from "../controller/orderController.js";
+import { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders, updateOrderToDelivered} from "../controller/orderController.js";
 import  { protect, admin } from '../middleware/authMiddleware.js';
 
 
@@ -18,6 +18,9 @@ router.route('/:id')
 
 router.route('/:id/pay')
           .put(protect,updateOrderToPaid);
+
+router.route('/:id/deliver')
+          .put(protect, admin, updateOrderToPaid);
 
 
 export default router 
